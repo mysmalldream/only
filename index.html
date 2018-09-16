@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=utf-8 />
+	<!--[if lte IE 8]>
+ 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<!-- Use jQuery for best compatibility with other CSS3 enabled browsers -->
+	<script src="js/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="js/flux.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript" charset="utf-8">
+		$(function () {
+			if (!flux.browser.supportsTransitions)
+				alert("Flux Slider requires a browser that supports CSS3 transitions");
+
+			window.f = new flux.slider('#slider', {
+				pagination: false,
+				controls: false,
+				transitions: ['explode', 'tiles3d', 'bars3d', 'cube', 'turn'],
+				autoplay: false
+			});
+
+			$('.transitions').click(function (event) {
+				event.preventDefault();
+				window.f.next($(event.target).data('transition'), $(event.target).data('params'));
+			});
+		});
+	</script>
+	<style>
+		.fluxslider{
+				width:500px !important;
+				height: 400px !important;
+			}
+			.surface .image1{
+				width: 500px important;
+				height: 100px important;
+				background-size: 100% 100%;
+			}
+			/* .fluxslider>.surface>.image1,.image2{
+				width: 400px;
+				height: 600px;
+			} */
+			.fluxslider>.surface>images{
+				width: 400px !important;
+				height: 600px;
+			}
+		</style>
+</head>
+
+<body>
+	<section class="container">
+		<!-- <h1>全村的希望    </h1> -->
+		<ul class="transitions" style="font-size: 50px;padding: 0.1rem;">
+			<li><button type="button" data-transition="explode" data-params='{"rows": 4}'>全</button></li>
+			<li><button type="button" data-transition="tiles3d" data-params='{"columns": 6}'>村</button></li>
+			<li><button type="button" data-transition="bars3d">的</button></li>
+			<li><button type="button" data-transition="cube">希</button></li>
+			<li><button type="button" data-transition="turn">望</button></li>
+		</ul>
+		<div id="slider">
+			<img src="imgs/2.jpg" alt="" />
+			<img src="imgs/3.jpg" alt="" />
+			<img src="imgs/4.jpg" alt="" />
+			<img src="imgs/1.jpg" alt="" />
+
+		</div>
+
+	</section>
+</body>
+
+</html>
